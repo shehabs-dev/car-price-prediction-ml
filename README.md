@@ -18,8 +18,8 @@ A Streamlit-powered car price prediction app and training notebook that demonstr
 1. Clone the repo:
 
 ```bash
-git clone <repo-url>
-cd "car-price-prediction"
+git clone https://github.com/shehabs-dev/car-price-prediction-ml.git
+cd "car-price-prediction-ml"
 ```
 
 1. (Recommended) Create a virtual environment and activate it:
