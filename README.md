@@ -6,9 +6,10 @@ A Streamlit-powered car price prediction app and training notebook that demonstr
 
 ## 🚀 Features
 
-- **Interactive Streamlit UI** for fast price predictions (`UI/UI.py`) ✅
+- **Interactive Streamlit UI** for fast price predictions (`ui/app.py`) ✅
 - **Model training notebook** with EDA, feature engineering, and model evaluation (`model.ipynb`) 📊
-- **Reusable artifacts** exported with `joblib` (`car_price_model.pkl`, `scaler.pkl`, `features.pkl`) 🔁
+- **Reusable artifacts** exported with `joblib` (`ui/car_price_model.pkl`, `ui/scaler.pkl`, `ui/features.pkl`) 🔁
+- **Project report** available at `assets/Report.pdf` 📄
 - **Lightweight, reproducible stack**: pandas, scikit-learn, joblib, Streamlit 📦
 
 ---
@@ -18,8 +19,8 @@ A Streamlit-powered car price prediction app and training notebook that demonstr
 1. Clone the repo:
 
 ```bash
-git clone <repo-url>
-cd "car-price-prediction"
+git clone https://github.com/shehabs-dev/car-price-prediction-ml.git
+cd "car-price-prediction-ml"
 ```
 
 1. (Recommended) Create a virtual environment and activate it:
@@ -41,7 +42,7 @@ pip install -r requirements.txt
 1. Launch the Streamlit UI:
 
 ```bash
-streamlit run UI/UI.py
+streamlit run ui/app.py
 ```
 
 Open the displayed local URL in your browser to use the app.
@@ -57,7 +58,7 @@ Open the displayed local URL in your browser to use the app.
 ### Run the web UI (Streamlit)
 
 ```bash
-streamlit run UI/UI.py
+streamlit run ui/app.py
 ```
 
 ### Use the model programmatically
@@ -68,10 +69,10 @@ Example Python snippet to load artifacts and make a single prediction:
 import joblib
 import pandas as pd
 
-# Load artifacts (must exist in repo root)
-model = joblib.load("car_price_model.pkl")
-scaler = joblib.load("scaler.pkl")
-features = joblib.load("features.pkl")
+# Load artifacts (located in `ui/`)
+model = joblib.load("ui/car_price_model.pkl")
+scaler = joblib.load("ui/scaler.pkl")
+features = joblib.load("ui/features.pkl")
 
 # Create a single-row input (example values)
 X = pd.DataFrame(
@@ -88,7 +89,7 @@ pred = model.predict(X)[0]
 print(f"Predicted price: ${pred:,.2f}")
 ```
 
-> Tip: See `UI/UI.py` for a working example of how user inputs are encoded for prediction.
+> Tip: See `ui/app.py` for a working example of how user inputs are encoded for prediction.
 
 ---
 
@@ -96,14 +97,21 @@ print(f"Predicted price: ${pred:,.2f}")
 
 ```
 Car Price Prediction/
-├─ CarPrice_Dirty.csv        # Raw or example dataset
-├─ model.ipynb               # Notebook: EDA, training pipeline, evaluation
+├─ CarPrice_Dirty.csv        # Raw / example dataset
+├─ LICENSE                  # Project license
+├─ model.ipynb               # Notebook: EDA, training & evaluation
+├─ README.md                 # Project README (this file)
 ├─ requirements.txt          # Python dependencies
-├─ car_price_model.pkl       # (expected) trained model artifact
-├─ scaler.pkl                # (expected) numeric scaler
-├─ features.pkl              # (expected) ordered feature list
-└─ UI/
-   └─ UI.py                 # Streamlit app for predictions
+├─ assets/                   # Images and other static assets
+│  ├─ image/
+│  │  └─ sc_1.png
+│  └─ Report.pdf             # Project report / notes
+├─ ui/
+│  ├─ app.py                 # Streamlit app for predictions
+│  ├─ car_price_model.pkl    # Trained model artifact
+│  ├─ scaler.pkl             # Feature scaler
+│  └─ features.pkl           # Feature column list
+└─ __pycache__/              # Python cache directory (ignored in VCS)
 ```
 
 ---
